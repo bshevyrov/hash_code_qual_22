@@ -27,8 +27,14 @@ public class ProcessGo {
 
         //
 projects.sort(Comparators.FORMULA_SCORE);
-contributors.sort(Comparators.FROM_MIN_TO_MAX_SKILLS);        List<Contributor>  contributorsRsl = new ArrayList<>();
+contributors.sort(Comparators.FROM_MIN_TO_MAX_SKILLS);
+
+        System.out.println(contributors.toString());
+
+List<String> rsl = new ArrayList<>();
+List<Contributor>  contributorsRsl = new ArrayList<>();
         for (Project project : projects) {
+            List<Contributor> rslContr = new ArrayList<>();
             for (int i = 0; i <project.getRoles().size() ; i++) {
                 for (Contributor contributor : contributors) {
                         if(contributorsRsl.contains(contributor)){
@@ -41,7 +47,7 @@ contributors.sort(Comparators.FROM_MIN_TO_MAX_SKILLS);        List<Contributor> 
 
 
                     if(currentContributorSkill.contains((projectSkill.get(i)))
-                            &&contributor.getSkills().get(projectSkill.get(i)) == projectLevel.get(i)) {
+                            &&contributor.getSkills().get(projectSkill.get(i)) >= projectLevel.get(i)) {
                         //increase skill if not max, not 6
                         if(contributor.getSkills().get(projectSkill.get(i))<6){
                             Map<String, Integer> skills = contributor.getSkills();
@@ -52,11 +58,19 @@ contributors.sort(Comparators.FROM_MIN_TO_MAX_SKILLS);        List<Contributor> 
                         }
 
                         contributorsRsl.add(contributor);
+                        rslContr.add(contributor);
                     }
                 }
             }
+            rsl.add(project.getName());
+            String rslTmp="";
+            for (Contributor contributor : rslContr) {
+                rslTmp+= contributor.getName() + " ";
+            }
+
+            rsl.add(rslTmp);
         }
         System.out.println(contributorsRsl.toString());
-
+        System.out.println(rsl.toString());
     }
 }

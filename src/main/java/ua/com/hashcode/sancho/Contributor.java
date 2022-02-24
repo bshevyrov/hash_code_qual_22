@@ -8,6 +8,16 @@ public class Contributor implements Comparable<Contributor>{
     private Map<String, Integer> skills;
     private int skillCount;
 
+    public int getBusyUntilTurnNumber() {
+        return busyUntilTurnNumber;
+    }
+
+    public void setBusyUntilTurnNumber(int busyUntilTurnNumber) {
+        this.busyUntilTurnNumber = busyUntilTurnNumber;
+    }
+
+    private int busyUntilTurnNumber;
+
     public int getSkillCount() {
         return skillCount;
     }

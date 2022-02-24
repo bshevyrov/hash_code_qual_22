@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class InputToAss {
     private static List<Contributor> contributors = new ArrayList<>();
@@ -39,7 +40,15 @@ public class InputToAss {
             n++;
             i += skillsNum;
             count++;
-            contributor.setSkills(skills);
+//сортировка по уровню скила
+            Map<String, Integer> result = skills.entrySet().stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                            (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+
+
+            contributor.setSkills(result);
             contributor.setSkillCount(contributor.getSkills().size());
             contributors.add(contributor);
         }
