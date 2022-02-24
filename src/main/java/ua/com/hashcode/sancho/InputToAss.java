@@ -40,6 +40,7 @@ public class InputToAss {
             i += skillsNum;
             count++;
             contributor.setSkills(skills);
+            contributor.setSkillCount(contributor.getSkills().size());
             contributors.add(contributor);
         }
         for (int i = n; i < list.size(); i++) {

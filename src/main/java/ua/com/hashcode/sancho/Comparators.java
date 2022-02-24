@@ -5,6 +5,7 @@ import java.util.Comparator;
 public class Comparators {
 
     public static final Comparator<Project> FORMULA_SCORE = Comparator.comparingDouble(Project::getFormulaScore);
+    public static final Comparator<Contributor> FROM_MIN_TO_MAX_SKILLS = Comparator.comparing(Contributor::getSkillCount);
 
 //    public static final Comparator<Client> MAX_DIS = Comparator.comparingDouble(Client::getDislikesSize).reversed();
 //    public static final Comparator<Client> MIN_LIKE = Comparator.comparingDouble(Client::getLikesSize);
