@@ -13,15 +13,14 @@ public class ProcessGo {
     private static List<Contributor> contributors;
     private static List<Project> projects;
 
-    public static void run() {
-        Path path = Paths.get("a_an_example.in.txt");
-        Path pathOut = Paths.get("a_output.txt");
-        InputToAss.trim(path);
+    public static void run(Path in,Path out) {
+
+        InputToAss.trim(in);
         contributors = InputToAss.getContributors();
-        System.out.println("Contributors: ");
+     //   System.out.println("Contributors: ");
         contributors.stream().forEach(System.out::println);
         projects = InputToAss.getProjects();
-        System.out.println("Projects: ");
+      //  System.out.println("Projects: ");
         projects.stream().forEach(System.out::println);
 
 
@@ -29,7 +28,7 @@ public class ProcessGo {
 projects.sort(Comparators.FORMULA_SCORE);
 contributors.sort(Comparators.FROM_MIN_TO_MAX_SKILLS);
 
-        System.out.println(contributors.toString());
+    //    System.out.println(contributors.toString());
 
 List<String> rsl = new ArrayList<>();
 List<Contributor>  contributorsRsl = new ArrayList<>();
@@ -77,7 +76,13 @@ List<Contributor>  contributorsRsl = new ArrayList<>();
             for (Contributor contributor : rslContr) {
                 rslTmpContrib+= contributor.getName() + " ";
             }
-            rslTmpContrib=rslTmpContrib.substring(0,rslTmpContrib.length()-1);
+
+            //TODO fix this
+            if (rslTmpContrib.length()==0){
+                continue;
+            }
+            String tmpXZ= rslTmpContrib.substring(0,rslTmpContrib.length()-1);
+            rslTmpContrib=tmpXZ;
 
             rsl.add(rslTmpContrib);
         }
@@ -85,10 +90,10 @@ List<Contributor>  contributorsRsl = new ArrayList<>();
                 break;
             }
         }
-        System.out.println(contributorsRsl.toString());
+    //    System.out.println(contributorsRsl.toString());
         rsl.add(0, String.valueOf(rsl.size()/2));
         System.out.println(rsl.toString());
-        OutputFromAss.out(rsl,Paths.get("src/main/resources/_output.txt"));
+        OutputFromAss.out(rsl,out);
     }
 
 }
