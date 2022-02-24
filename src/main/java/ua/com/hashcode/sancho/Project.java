@@ -2,7 +2,7 @@ package ua.com.hashcode.sancho;
 
 import java.util.Map;
 
-public class Project {
+public class Project implements Comparable<Project> {
     private String name;
     private Integer score;
     private Integer duration;
@@ -58,5 +58,10 @@ public class Project {
                 ", bestBefore=" + bestBefore +
                 ", roles=" + roles +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Project o) {
+        return 0;
     }
 }
