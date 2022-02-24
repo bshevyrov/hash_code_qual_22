@@ -11,6 +11,7 @@ public class ProcessGo {
 
     public static void run() {
         Path path = Paths.get("a_an_example.in.txt");
+        Path pathOut = Paths.get("a_output.txt");
         InputToAss.trim(path);
         contributors = InputToAss.getContributors();
         System.out.println("Contributors: ");
@@ -18,5 +19,6 @@ public class ProcessGo {
         projects = InputToAss.getProjects();
         System.out.println("Projects: ");
         projects.stream().forEach(System.out::println);
+
     }
 }
