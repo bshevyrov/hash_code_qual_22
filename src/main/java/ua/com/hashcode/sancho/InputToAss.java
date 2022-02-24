@@ -55,6 +55,8 @@ public class InputToAss {
             }
             i += projNum;
             project.setRoles(roles);
+            //ФОРМУЛА score делим на (duration умножить на количество требуемых людей)
+            project.setFormulaScore((project.getDuration().doubleValue()*project.getRoles().size())/project.getScore().doubleValue());
             projects.add(project);
         }
     }

@@ -2,12 +2,22 @@ package ua.com.hashcode.sancho;
 
 import java.util.Map;
 
-public class Project {
+public class Project implements Comparable<Project> {
     private String name;
     private Integer score;
     private Integer duration;
     private Integer bestBefore;
     private Map<String, Integer> roles;
+    //ФОРМУЛА score делим на (duration умножить на количество требуемых людей)
+    private Double formulaScore;
+
+    public Double getFormulaScore() {
+        return formulaScore;
+    }
+
+    public void setFormulaScore(Double formulaScore) {
+        this.formulaScore = formulaScore;
+    }
 
     public String getName() {
         return name;
@@ -52,11 +62,17 @@ public class Project {
     @Override
     public String toString() {
         return "Project{" +
-                "name='" + name + '\'' +
+                "name='" + name  +
                 ", score=" + score +
                 ", duration=" + duration +
                 ", bestBefore=" + bestBefore +
                 ", roles=" + roles +
+                ", formulaScore=" + formulaScore +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Project o) {
+        return 0;
     }
 }
