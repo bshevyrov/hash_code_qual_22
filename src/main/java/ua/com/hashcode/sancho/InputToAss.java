@@ -24,31 +24,36 @@ public class InputToAss {
         int contNumber = Integer.parseInt(list.get(0).split(" ")[0]);
         int projectNumber = Integer.parseInt(list.get(0).split(" ")[1]);
         int n = 1;
+        int count = 0;
 
         for (int i = 1; i < list.size(); i++) {
+            if (count == contNumber) break;
             Contributor contributor = new Contributor();
             contributor.setName(list.get(i).split(" ")[0]);
             Map<String, Integer> skills = new HashMap<>();
-            i += Integer.parseInt(list.get(i).split(" ")[1]);
-            for (int j = i + 1; j < Integer.parseInt(list.get(i).split(" ")[1]) + 1; j++) {
+            int skillsNum = Integer.parseInt(list.get(i).split(" ")[1]);
+            for (int j = i + 1; j < skillsNum + i + 1; j++) {
                 skills.put(list.get(j).split(" ")[0], Integer.parseInt(list.get(j).split(" ")[1]));
                 n++;
             }
+            n++;
+            i += skillsNum;
+            count++;
             contributor.setSkills(skills);
             contributors.add(contributor);
         }
-        System.out.println("Contributors: ");
-        contributors.stream().forEach(System.out::println);
-        for (int i = n; i < i + projectNumber; i++) {
+        for (int i = n; i < list.size(); i++) {
             Project project = new Project();
             project.setName(list.get(i).split(" ")[0]);
             project.setDuration(Integer.parseInt(list.get(i).split(" ")[1]));
             project.setScore(Integer.parseInt(list.get(i).split(" ")[2]));
             project.setBestBefore(Integer.parseInt(list.get(i).split(" ")[3]));
             Map<String, Integer> roles = new HashMap<>();
-            for(int j = i + 1; j < i + Integer.parseInt(list.get(j).split(" ")[4]) + 1; j++) {
+            int projNum = Integer.parseInt(list.get(i).split(" ")[4]);
+            for(int j = i + 1; j < i + projNum + 1; j++) {
                 roles.put(list.get(j).split(" ")[0], Integer.parseInt(list.get(j).split(" ")[1]));
             }
+            i += projNum;
             project.setRoles(roles);
             projects.add(project);
         }
