@@ -28,6 +28,8 @@ public class OutputFromAss {
 
         try {
             for (String s : result) {
+
+                s+=" ";
                 Files.write(path, s.getBytes(), StandardOpenOption.APPEND);
             }
         } catch (IOException e) {

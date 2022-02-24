@@ -33,11 +33,20 @@ contributors.sort(Comparators.FROM_MIN_TO_MAX_SKILLS);
 
 List<String> rsl = new ArrayList<>();
 List<Contributor>  contributorsRsl = new ArrayList<>();
+        int totalJobDone=0;
+
+
+        for (int l = 0; l >-1 ; l++) {
+
+
         for (Project project : projects) {
+            if (rsl.contains(project.getName())){
+                continue;
+            }
             List<Contributor> rslContr = new ArrayList<>();
             for (int i = 0; i <project.getRoles().size() ; i++) {
                 for (Contributor contributor : contributors) {
-                        if(contributorsRsl.contains(contributor)){
+                        if(contributor.getBusyUntilTurnNumber()<l){
                             continue;
                         }
                     List<String> projectSkill = new ArrayList<String>(project.getRoles().keySet());
@@ -56,21 +65,30 @@ List<Contributor>  contributorsRsl = new ArrayList<>();
                             skills.put((projectSkill.get(i)),skillLevel);
                             contributor.setSkills(skills);
                         }
-
+                        contributor.setBusyUntilTurnNumber(project.getDuration());
                         contributorsRsl.add(contributor);
                         rslContr.add(contributor);
                     }
                 }
             }
             rsl.add(project.getName());
-            String rslTmp="";
+            totalJobDone++;
+            String rslTmpContrib="";
             for (Contributor contributor : rslContr) {
-                rslTmp+= contributor.getName() + " ";
+                rslTmpContrib+= contributor.getName() + " ";
             }
+            rslTmpContrib=rslTmpContrib.substring(0,rslTmpContrib.length()-1);
 
-            rsl.add(rslTmp);
+            rsl.add(rslTmpContrib);
+        }
+            if (projects.size()== totalJobDone){
+                break;
+            }
         }
         System.out.println(contributorsRsl.toString());
+        rsl.add(0, String.valueOf(rsl.size()/2));
         System.out.println(rsl.toString());
+        OutputFromAss.out(rsl,Paths.get("src/main/resources/_output.txt"));
     }
+
 }

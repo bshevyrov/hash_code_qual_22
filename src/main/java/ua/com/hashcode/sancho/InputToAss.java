@@ -47,7 +47,7 @@ public class InputToAss {
                             (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
 
-
+            contributor.setBusyUntilTurnNumber(0);
             contributor.setSkills(result);
             contributor.setSkillCount(contributor.getSkills().size());
             contributors.add(contributor);
