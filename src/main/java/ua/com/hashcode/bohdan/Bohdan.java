@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Bohdan {
     private static List<Project> sortProject (List<Project> listProject) {
-
+ //ФОРМУЛА score делим на (duration умножить на количество требуемых людей)
 
     }
 

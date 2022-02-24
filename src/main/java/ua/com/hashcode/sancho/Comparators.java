@@ -2,9 +2,9 @@ package ua.com.hashcode.sancho;
 
 import java.util.Comparator;
 
-public static class Comparators {
+public class Comparators {
 
-    public static final Comparator<Project> OP_SIZE = Comparator.comparingDouble(Client::getOpinionSize);
+    public static final Comparator<Project> OP_SIZE = Comparator.comparingDouble(Project::getScore);
 
 //    public static final Comparator<Client> MAX_DIS = Comparator.comparingDouble(Client::getDislikesSize).reversed();
 //    public static final Comparator<Client> MIN_LIKE = Comparator.comparingDouble(Client::getLikesSize);

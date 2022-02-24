@@ -8,6 +8,15 @@ public class Project implements Comparable<Project> {
     private Integer duration;
     private Integer bestBefore;
     private Map<String, Integer> roles;
+    private Double formulaScore;
+
+    public Double getFormulaScore() {
+        return formulaScore;
+    }
+
+    public void setFormulaScore(Double formulaScore) {
+        this.formulaScore = formulaScore;
+    }
 
     public String getName() {
         return name;
@@ -57,6 +66,7 @@ public class Project implements Comparable<Project> {
                 ", duration=" + duration +
                 ", bestBefore=" + bestBefore +
                 ", roles=" + roles +
+                ", formulaScore=" + formulaScore +
                 '}';
     }
 
