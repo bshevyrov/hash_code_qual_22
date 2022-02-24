@@ -50,6 +50,8 @@ public class InputToAss {
                 roles.put(list.get(j).split(" ")[0], Integer.parseInt(list.get(j).split(" ")[1]));
             }
             project.setRoles(roles);
+            //ФОРМУЛА score делим на (duration умножить на количество требуемых людей)
+            project.setFormulaScore((project.getDuration().doubleValue()*project.getRoles().size())/project.getScore().doubleValue());
             projects.add(project);
         }
     }

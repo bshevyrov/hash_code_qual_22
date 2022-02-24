@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Comparators {
 
-    public static final Comparator<Project> OP_SIZE = Comparator.comparingDouble(Project::getScore);
+    public static final Comparator<Project> FORMULA_SCORE = Comparator.comparingDouble(Project::getFormulaScore);
 
 //    public static final Comparator<Client> MAX_DIS = Comparator.comparingDouble(Client::getDislikesSize).reversed();
 //    public static final Comparator<Client> MIN_LIKE = Comparator.comparingDouble(Client::getLikesSize);

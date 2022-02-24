@@ -8,6 +8,7 @@ public class Project implements Comparable<Project> {
     private Integer duration;
     private Integer bestBefore;
     private Map<String, Integer> roles;
+    //ФОРМУЛА score делим на (duration умножить на количество требуемых людей)
     private Double formulaScore;
 
     public Double getFormulaScore() {
@@ -61,7 +62,7 @@ public class Project implements Comparable<Project> {
     @Override
     public String toString() {
         return "Project{" +
-                "name='" + name + '\'' +
+                "name='" + name  +
                 ", score=" + score +
                 ", duration=" + duration +
                 ", bestBefore=" + bestBefore +
